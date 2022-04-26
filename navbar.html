@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai Investors</title>
+</head>
+<link rel="stylesheet" href="common.css">
+<style>
+    #navbar{
+        margin-bottom: 60px;
+    }
+   
+</style>
+<body>
+    <div id="navbar">
+        <div><a href="backend.html">Backend</a></div>
+        <div><a href="frontend.html">Frontend</a></div>
+    </div>
+    <form>
+        <input id="imgurl" type="text" placeholder="Enter Img Url">
+        <input id="nam" type="text" placeholder="Enter Investor Name">
+        <input id="rol" type="text" placeholder="Enter Investor Role">
+        <input id="logo" type="text" placeholder="Enter Company Logo">
+        <input type="submit">
+    </form>
+</body>
+</html>
+
+<script>
+   document.querySelector("form").addEventListener("submit",myfun)
+
+   var Investorarr=JSON.parse(localStorage.getItem("InvestorsData"))||[];
+
+   function myfun(){
+       event.preventDefault()
+
+       var investorobj={
+           investorImg:document.querySelector("#imgurl").value,
+           investorname:document.querySelector("#nam").value,
+           investorrole:document.querySelector("#rol").value,
+           investorcomapylogo:document.querySelector("#logo").value,
+       }
+        Investorarr.push(investorobj);
+        console.log(Investorarr);
+
+        localStorage.setItem("InvestorsData",JSON.stringify(Investorarr));
+   }
+</script>

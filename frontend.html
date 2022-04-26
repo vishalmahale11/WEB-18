@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontEnd</title>
+</head>
+<style>
+    #container{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: repeat(4,auto);
+        gap: 10px;
+        width: 80%;
+        margin: auto;
+    }
+    #container>img{
+        height: 60%;
+        width: 100%;
+    }
+    h3{
+        text-align: center;
+        font-weight: bolder;
+        
+    }
+    p{
+        text-align: center;
+        margin-top: -10px;
+        color: grey;
+    }
+
+    p+img{
+            height: 100px;
+            width: 100px;
+            margin-top: -25px;
+            margin-left: 100px;
+    }
+</style>
+<body>
+    <h1>FrontEnd</h1>
+
+    <div id="container"></div>
+</body>
+</html>
+
+<script>
+    var Investorarr= JSON.parse(localStorage.getItem("InvestorsData"));
+
+    console.log(Investorarr)
+
+
+    
+Investorarr.forEach(function(el){
+    var box=document.createElement("div");
+
+    var Investors_avtar=document.createElement("img");
+    Investors_avtar.setAttribute("src",el.investorImg)
+
+    var Investors_name=document.createElement("h3");
+    Investors_name.innerText=el.investorname;
+
+    var Investors_position=document.createElement("p");
+    Investors_position.innerText=el.investorrole;
+
+    var Investors_company=document.createElement("img");
+    Investors_company.setAttribute("src",el.investorcomapylogo)
+
+    box.append(Investors_avtar,Investors_name, Investors_position,Investors_company);
+    document.querySelector("#container").append(box);
+})
+
+</script>
